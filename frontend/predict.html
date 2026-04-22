@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment | MindGuardAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>MindGuard<span class="logo-accent">AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="predict.html" class="active"><i class="fas fa-chart-line"></i> Risk Assessment</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-stethoscope"></i> Mental Health Risk Assessment</h1>
+            <p>Complete the form below for an AI-powered risk analysis based on 24 different factors</p>
+        </div>
+
+        <div class="assessment-container">
+            <!-- Form Section -->
+            <div class="form-section">
+                <form id="assessmentForm">
+                    <!-- Demographics -->
+                    <div class="form-group">
+                        <h3><i class="fas fa-user"></i> Demographics</h3>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-calendar"></i> Age</label>
+                                <input type="number" id="age" min="18" max="60" value="25" required>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-venus-mars"></i> Gender</label>
+                                <select id="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-heart"></i> Marital Status</label>
+                                <select id="marital_status">
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-graduation-cap"></i> Education</label>
+                                <select id="education_level">
+                                    <option value="High School">High School</option>
+                                    <option value="Bachelor">Bachelor</option>
+                                    <option value="Master">Master</option>
+                                    <option value="PhD">PhD</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-briefcase"></i> Employment</label>
+                                <select id="employment_status">
+                                    <option value="Student">Student</option>
+                                    <option value="Employed">Employed</option>
+                                    <option value="Self-Employed">Self-Employed</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lifestyle Factors -->
+                    <div class="form-group">
+                        <h3><i class="fas fa-heartbeat"></i> Lifestyle & Health</h3>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-bed"></i> Sleep Hours/Day</label>
+                                <input type="range" id="sleep_hours" min="3" max="10" step="0.5" value="7">
+                                <span class="range-value" id="sleep_value">7.0 hrs</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-running"></i> Physical Activity (hrs/week)</label>
+                                <input type="range" id="physical_activity" min="0" max="15" step="0.5" value="5">
+                                <span class="range-value" id="activity_value">5.0 hrs</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-mobile-alt"></i> Screen Time (hrs/day)</label>
+                                <input type="range" id="screen_time" min="1" max="12" step="0.5" value="5">
+                                <span class="range-value" id="screen_value">5.0 hrs</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-users"></i> Social Support (1-10)</label>
+                                <input type="range" id="social_support" min="1" max="10" value="7">
+                                <span class="range-value" id="social_value">7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stress Indicators -->
+                    <div class="form-group">
+                        <h3><i class="fas fa-chart-line"></i> Stress & Wellbeing</h3>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-briefcase"></i> Work Stress (1-10)</label>
+                                <input type="range" id="work_stress" min="1" max="10" value="5">
+                                <span class="range-value" id="work_stress_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-book"></i> Academic Pressure (1-10)</label>
+                                <input type="range" id="academic_pressure" min="1" max="10" value="5">
+                                <span class="range-value" id="academic_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-smile"></i> Job Satisfaction (1-10)</label>
+                                <input type="range" id="job_satisfaction" min="1" max="10" value="7">
+                                <span class="range-value" id="job_value">7</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-dollar-sign"></i> Financial Stress (1-10)</label>
+                                <input type="range" id="financial_stress" min="1" max="10" value="5">
+                                <span class="range-value" id="financial_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-clock"></i> Working Hours/Week</label>
+                                <input type="range" id="working_hours" min="20" max="70" step="5" value="40">
+                                <span class="range-value" id="hours_value">40 hrs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Psychological Indicators -->
+                    <div class="form-group">
+                        <h3><i class="fas fa-brain"></i> Psychological Indicators</h3>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-frown"></i> Anxiety Score (1-10)</label>
+                                <input type="range" id="anxiety_score" min="1" max="10" value="5">
+                                <span class="range-value" id="anxiety_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-sad-tear"></i> Depression Score (1-10)</label>
+                                <input type="range" id="depression_score" min="1" max="10" value="5">
+                                <span class="range-value" id="depression_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-waveform"></i> Stress Level (1-10)</label>
+                                <input type="range" id="stress_level" min="1" max="10" value="5">
+                                <span class="range-value" id="stress_value">5</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-exchange-alt"></i> Mood Swings (1-10)</label>
+                                <input type="range" id="mood_swings" min="1" max="10" value="5">
+                                <span class="range-value" id="mood_value">5</span>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-brain"></i> Concentration Difficulty (1-10)</label>
+                                <input type="range" id="concentration" min="1" max="10" value="5">
+                                <span class="range-value" id="concentration_value">5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medical History -->
+                    <div class="form-group">
+                        <h3><i class="fas fa-notes-medical"></i> Medical History</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="panic_attack"> History of Panic Attacks</label>
+                            <label><input type="checkbox" id="family_history"> Family History of Mental Illness</label>
+                            <label><input type="checkbox" id="previous_diagnosis"> Previous Mental Health
+                                Diagnosis</label>
+                            <label><input type="checkbox" id="therapy_history"> Previous Therapy History</label>
+                            <label><input type="checkbox" id="substance_use"> Substance Use</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit"><i class="fas fa-chart-line"></i> Analyze Risk
+                        Level</button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-card">
+                    <h2>Assessment Results</h2>
+                    <div class="risk-indicator" id="riskIndicator">
+                        <div class="risk-level" id="riskLevel"></div>
+                        <div class="confidence" id="confidence"></div>
+                    </div>
+                    <canvas id="probabilityChart" width="400" height="200"></canvas>
+                    <div class="recommendations" id="recommendations">
+                        <h3><i class="fas fa-lightbulb"></i> Personalized Recommendations</h3>
+                        <ul id="recommendationsList"></ul>
+                    </div>
+                    <button class="btn-reset" onclick="location.reload()"><i class="fas fa-redo"></i> New
+                        Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
